@@ -72,7 +72,7 @@ def searchObject(searchItem, classes, frames):
 
 def app():
     if os.path.exists('./frames') :
-        os.rmdir('.\\frames')
+        os.rmdir('./frames')
     else:
         os.mkdir('frames')
     st.header("Upload Video")
