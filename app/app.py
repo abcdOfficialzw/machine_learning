@@ -70,8 +70,11 @@ def searchObject(searchItem, classes, frames):
         st.write("object not found")
 
 
-def app(): 
-    os.rmdir('.\\frames')
+def app():
+    if os.path.exists('./frames') :
+        os.rmdir('.\\frames')
+    else:
+        os.mkdir('frames')
     st.header("Upload Video")
     st.info("Video must be less than 2MB")
 
