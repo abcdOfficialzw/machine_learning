@@ -78,12 +78,16 @@ def app():
     st.info("Video must be less than 2MB")
 
     uploaded_file = st.file_uploader("video to be used in detection",type=["mp4"])
-    classifications, frames = classifyObjects(uploaded_file)
 
-    search_item = st.text_input('search object')
-    if st.button("Search"):
-        print('searching')
-        searchObject(search_item, classifications, frames)
+    if uploaded_file is not None:
+        video = temporaryVideo(uploaded_file)
+        splitVideo(video)
+        classifications, frames = classifyObjects(uploaded_file)
+
+        search_item = st.text_input('search object')
+        if st.button("Search"):
+            print('searching')
+            searchObject(search_item, classifications, frames)
 
 
 if __name__ == "__main__":
