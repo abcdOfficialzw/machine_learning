@@ -20,7 +20,6 @@ def temporaryVideo(video):
         vid.close()
         return temporary_location
 
-
 def splitVideo(video):
     file = temporaryVideo(video)
     cap = cv2.VideoCapture(file)
@@ -42,7 +41,6 @@ def splitVideo(video):
     # cap.release()
     # cap.destroyAllWindows()
 
-
 def classifyObjects(video):
     splitVideo(video)
     model = vgg16.VGG16()
@@ -58,9 +56,9 @@ def classifyObjects(video):
         label = label[0][0]
         result = label[1]
         classifications.append(result)
+        st.info(classifications, frames)
     return classifications, frames
         
-
 def searchObject(searchItem, classes, frames):
     if searchItem in classes:
         index = classes.index(searchItem)
@@ -69,7 +67,6 @@ def searchObject(searchItem, classes, frames):
         st.image(img, caption=searchItem)
     else:
         st.write("object not found")
-
 
 def app():
     if os.path.exists('./frames') :
