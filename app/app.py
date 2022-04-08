@@ -85,6 +85,7 @@ def app():
 
     search_item = st.text_input('search object')
     if st.button("Search"):
+        print('searching')
         searchObject(search_item, classifications, frames)
 
 
